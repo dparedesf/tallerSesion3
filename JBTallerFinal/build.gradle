@@ -1,0 +1,50 @@
+buildscript {
+    repositories{
+        jcenter()
+    }
+    dependencies{
+        classpath "io.qameta.allure:allure-gradle:2.5"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'io.qameta.allure'
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Motor pruebas
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    // SELENIUM -- WEB UI
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+
+    // API Client
+
+    compile 'org.jboss.resteasy:resteasy-jaxrs:3.0.8.Final'
+    compile 'org.jboss.resteasy:resteasy-client:3.0.8.Final'
+    compile 'org.jboss.resteasy:resteasy-multipart-provider:3.0.8.Final'
+    compile 'org.jboss.resteasy:resteasy-jackson-provider:3.0.8.Final'
+    compile 'org.glassfish.jersey.media:jersey-media-multipart:2.22.2'
+
+    // json
+    compile 'com.googlecode.json-simple:json-simple:1.1.1'
+    compile 'org.json:json:20090211'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.6.1'
+
+    // Reportes
+    // https://mvnrepository.com/artifact/io.qameta.allure/allure-junit4
+    testCompile group: 'io.qameta.allure', name: 'allure-junit4', version: '2.13.5'
+
+}
+
+allure{
+    autoconfigure = true
+    version = "2.6.0"
+    aspectjweaver = true
+}
